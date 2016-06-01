@@ -14,7 +14,8 @@
     },
     appendToBody: false,
     class: undefined,
-    pointClass: 'ct-point'
+    pointClass: 'ct-point',
+    fixedForBar: false
   };
 
   Chartist.plugins = Chartist.plugins || {};
@@ -119,20 +120,26 @@
         hide($toolTip);
       });
 
-      on('mousemove', null, function (event) {
+      on('mousemove', null, function (event, selector) {
         setPosition(event);
       });
 
       function setPosition(event) {
         height = height || $toolTip.offsetHeight;
         width = width || $toolTip.offsetWidth;
-        var offsetX = - width / 2 + options.tooltipOffset.x
+        var offsetX = - width / 2 + options.tooltipOffset.x;
         var offsetY = - height + options.tooltipOffset.y;
-        
+
         if (!options.appendToBody) {
           var box = $chart.getBoundingClientRect();
           var left = event.pageX - box.left - window.pageXOffset ;
-          var top = event.pageY - box.top - window.pageYOffset ;
+          
+          if(options.fixedForBar){
+            var top = event.target.getAttribute('y2') - height + options.tooltipOffset.y;
+          }
+          else{
+            var top = event.pageY - box.top - window.pageYOffset ;
+          }
 
           $toolTip.style.top = top + offsetY + 'px';
           $toolTip.style.left = left + offsetX + 'px';
