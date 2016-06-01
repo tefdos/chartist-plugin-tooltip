@@ -16,8 +16,10 @@ var defaultOptions = {
   // transform tooltip text
   class: undefined, // accecpts 'class1', 'class1 class2', etc.
   //adds class(es) to tooltip wrapper
-  appendToBody: false //accepts true or false
+  appendToBody: false, //accepts true or false
   //appends tooltips to body instead of chart container
+  fixedOnBar: false, //accepts true or false
+  //sets tooltip on the top of bar chart
 };
 ```
 
