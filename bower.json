@@ -1,5 +1,5 @@
 {
-  "name": "chartist-plugin-tooltip",
+  "name": "chartist-plugin-tooltip-fixed-on-bar",
   "main": [
     "./dist/chartist-plugin-tooltip.min.js",
     "./dist/chartist-plugin-tooltip.css"
